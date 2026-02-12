@@ -8,7 +8,7 @@ const TET_TIME = new Date("2026-02-17T00:00:00");
 export default function TetCountdown() {
   const [now, setNow] = useState(new Date());
   const navigate = useNavigate();
-
+  <HorseRain count={20} />;
   const diff = TET_TIME - now;
   const totalSeconds = Math.floor(diff / 1000);
 
