@@ -1,0 +1,578 @@
+:root {
+  --bg1: #5b0000;
+  --bg2: #8b0000;
+  --card: #b6001b;
+  --gold: #f3c84b;
+  --gold2: #ffd87a;
+  --white: #fff7e6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial;
+}
+
+/* ===== PAGE ===== */
+.lm-page {
+  min-height: 100vh;
+  background: radial-gradient(
+    1200px 500px at 50% 0%,
+    #9a0000 0%,
+    var(--bg2) 40%,
+    var(--bg1) 100%
+  );
+  color: var(--white);
+  padding: 28px 18px 36px;
+}
+
+.lm-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.lm-header h1 {
+  margin: 0;
+  font-size: clamp(26px, 3.2vw, 48px);
+  color: var(--gold2);
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  font-family: "Dancing Script", cursive;
+}
+
+.lm-sub {
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  opacity: 0.9;
+  font-family: "Dancing Script", cursive;
+}
+
+.lm-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===== BUTTON ===== */
+.lm-btn {
+  background: linear-gradient(180deg, #ffdf86, #f2c046);
+  border: 0;
+  color: #5a0a0a;
+  font-weight: 900;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+.lm-btn:active {
+  transform: translateY(1px);
+}
+
+/* ===== ADMIN ===== */
+.admin {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 216, 122, 0.35);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.admin-title {
+  font-weight: 900;
+  color: var(--gold2);
+  margin-bottom: 10px;
+}
+
+.admin-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.admin-row label {
+  opacity: 0.95;
+}
+
+.admin-row input {
+  width: 90px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--white);
+}
+
+.admin-hint {
+  margin-left: auto;
+  opacity: 0.95;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 80px;
+  gap: 10px;
+  align-items: center;
+}
+
+.admin-head {
+  font-weight: 800;
+  opacity: 0.9;
+}
+
+.admin-grid input {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--white);
+}
+
+.admin-danger {
+  border: 0;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+}
+
+.admin-danger:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.admin-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-note {
+  margin-top: 10px;
+  opacity: 0.9;
+  line-height: 1.35;
+}
+
+/* ===== GRID ===== */
+.lm-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(140px, 1fr));
+  gap: 18px;
+}
+
+/* ===== CARD ===== */
+.lm-card {
+  position: relative;
+  height: 280px;
+  background: linear-gradient(180deg, #c40020, var(--card));
+  border: 2px solid var(--gold);
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  user-select: none;
+  overflow: hidden;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Hover nổi + glow */
+.lm-card:hover {
+  animation: shake 0.5s ease-in-out;
+  transform: translateY(-10px) scale(1.03);
+  box-shadow:
+    0 30px 50px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(255, 215, 120, 0.6);
+  filter: brightness(1.08);
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0) translateY(-10px) scale(1.03);
+  }
+  10% {
+    transform: translateX(-3px) translateY(-10px) scale(1.03);
+  }
+  20% {
+    transform: translateX(3px) translateY(-10px) scale(1.03);
+  }
+  30% {
+    transform: translateX(-3px) translateY(-10px) scale(1.03);
+  }
+  40% {
+    transform: translateX(3px) translateY(-10px) scale(1.03);
+  }
+  50% {
+    transform: translateX(-3px) translateY(-10px) scale(1.03);
+  }
+  60% {
+    transform: translateX(3px) translateY(-10px) scale(1.03);
+  }
+  70% {
+    transform: translateX(-3px) translateY(-10px) scale(1.03);
+  }
+  80% {
+    transform: translateX(3px) translateY(-10px) scale(1.03);
+  }
+  90% {
+    transform: translateX(-3px) translateY(-10px) scale(1.03);
+  }
+}
+
+/* opened thì không hover (đỡ gây hiểu nhầm) */
+.lm-card.opened {
+  cursor: default;
+  filter: saturate(0.95);
+}
+
+.lm-card.opened:hover {
+  transform: none;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.25);
+  filter: saturate(0.95);
+}
+
+.lm-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #6b0a0a;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.lm-mascotWrap {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.lm-mascot {
+  font-size: 58px;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+  transition: transform 0.3s ease;
+}
+
+.lm-mascot img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.lm-card:hover .lm-mascot {
+  transform: scale(1.12) rotate(5deg);
+}
+
+.lm-year {
+  width: 92px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffd87a, #f3c84b);
+  color: #6b0a0a;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  letter-spacing: 1px;
+  box-shadow: inset 0 0 0 2px rgba(150, 70, 0, 0.25);
+}
+
+.lm-money {
+  min-width: 120px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffd87a, #f3c84b);
+  color: #6b0a0a;
+  display: grid;
+  place-items: center;
+  font-weight: 950;
+  letter-spacing: 0.5px;
+  box-shadow: inset 0 0 0 2px rgba(150, 70, 0, 0.25);
+}
+
+.lm-text {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  text-align: center;
+  color: var(--gold2);
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.6px;
+  font-family: "Dancing Script", cursive;
+}
+
+/* ===== POPUP / MODAL ===== */
+.lm-modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.lm-modal {
+  width: min(520px, 94vw);
+  background: #fff8ea;
+  color: #5b0000;
+  border-radius: 20px;
+  border: 4px solid var(--gold);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(255, 215, 120, 0.55);
+  padding: 22px 18px 20px;
+  position: relative;
+  text-align: center;
+  animation: lmPop 160ms ease-out;
+}
+
+/* hạt bụi nhẹ */
+.lm-modal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@keyframes lmPop {
+  from {
+    transform: translateY(8px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.lm-modalClose {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: #b6001b;
+  font-size: 28px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.lm-modalTitle {
+  font-size: 38px;
+  font-weight: 900;
+  color: #b6001b;
+  margin-top: 6px;
+  font-family: "Dancing Script", cursive;
+}
+
+.lm-modalMascot {
+  font-size: 72px;
+  margin: 12px 0 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lm-modalMascot img {
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.lm-modalSub {
+  font-style: italic;
+  opacity: 0.85;
+  margin: 6px 0 16px;
+}
+
+.lm-modalMoney {
+  font-size: 44px;
+  font-weight: 1000;
+  color: #b6001b;
+  letter-spacing: 1px;
+  margin: 10px 0 18px;
+}
+
+.lm-claimBtn {
+  background: linear-gradient(180deg, #ffdf86, #f2c046);
+  border: 0;
+  color: #5a0a0a;
+  font-weight: 950;
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  min-width: 180px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+}
+
+.lm-claimBtn:active {
+  transform: translateY(1px);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* <= 1100px */
+@media (max-width: 1100px) {
+  .lm-grid {
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+  }
+}
+
+/* <= 900px */
+@media (max-width: 900px) {
+  .lm-page {
+    padding: 18px 12px 26px;
+  }
+
+  .lm-grid {
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    gap: 14px;
+  }
+
+  .lm-card {
+    height: 240px;
+  }
+
+  .lm-mascot {
+    font-size: 52px;
+  }
+}
+
+/* <= 700px */
+@media (max-width: 700px) {
+  .lm-grid {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+}
+
+/* <= 600px (điện thoại) */
+@media (max-width: 600px) {
+  .lm-header h1 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .lm-sub {
+    letter-spacing: 1.5px;
+    font-size: 12px;
+  }
+
+  .lm-grid {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .lm-card {
+    height: 210px;
+    padding: 12px;
+  }
+
+  .lm-badge {
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    left: 10px;
+    font-size: 13px;
+  }
+
+  .lm-mascotWrap {
+    margin-top: 34px;
+    gap: 8px;
+  }
+
+  .lm-mascot {
+    font-size: 48px;
+  }
+
+  .lm-year {
+    width: 84px;
+    height: 34px;
+    font-size: 13px;
+  }
+
+  .lm-money {
+    min-width: 108px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .lm-text {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    font-size: 16px;
+  }
+
+  .lm-btn {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .lm-modalTitle {
+    font-size: 30px;
+  }
+
+  .lm-modalMoney {
+    font-size: 36px;
+  }
+
+  .lm-modalMascot {
+    font-size: 64px;
+  }
+}
+
+/* <= 360px (điện thoại nhỏ) */
+@media (max-width: 360px) {
+  .lm-grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+
+  .lm-card {
+    height: 195px;
+  }
+
+  .lm-mascot {
+    font-size: 44px;
+  }
+}
