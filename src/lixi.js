@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import "./lucky.css";
 import { STORAGE_KEY } from "./AdminPanel";
 
@@ -31,6 +31,8 @@ const defaultConfigFallback = {
     { value: 50000, count: 2 },
   ],
 };
+
+/* ================== Utils ================== */
 
 function shuffle(arr) {
   const a = [...arr];
@@ -71,6 +73,7 @@ function createCards(cfg) {
   const n = Math.max(1, Number(cfg.cardsCount || 12));
   const labels = shuffle(DEFAULT_LABELS).slice(0, n);
   const amounts = shuffle(buildPool(cfg.denoms));
+
   return labels.map((label, idx) => ({
     id: `${Date.now()}-${idx}`,
     label,
@@ -80,7 +83,8 @@ function createCards(cfg) {
   }));
 }
 
-/** Popup */
+/* ================== Modal ================== */
+
 function CongratsModal({ open, card, onClose, onClaim }) {
   if (!open || !card) return null;
 
@@ -111,18 +115,17 @@ function CongratsModal({ open, card, onClose, onClaim }) {
   );
 }
 
-export default function LuckyBoard() {
-  const [cfgSeed, setCfgSeed] = useState(0);
-  const cfg = useMemo(() => loadCfg(), [cfgSeed]);
-  const [cards, setCards] = useState(() => createCards(cfg));
+/* ================== Main ================== */
 
+export default function LuckyBoard() {
+  const cfg = loadCfg();
+  const [cards, setCards] = useState(() => createCards(cfg));
   const [selected, setSelected] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   function regen() {
     const newCfg = loadCfg();
     setCards(createCards(newCfg));
-    setCfgSeed((s) => s + 1);
     setSelected(null);
     setModalOpen(false);
   }
@@ -138,7 +141,6 @@ export default function LuckyBoard() {
   }
 
   function claim() {
-    // đánh dấu đã mở
     setCards((prev) =>
       prev.map((c) => (c.id === selected.id ? { ...c, opened: true } : c)),
     );
@@ -174,6 +176,7 @@ export default function LuckyBoard() {
               <div className="lm-mascot">
                 <img src="/ngua.png" alt="Mascot" />
               </div>
+
               {!c.opened ? (
                 <div className="lm-year">2026</div>
               ) : (
