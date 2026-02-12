@@ -7,6 +7,7 @@
   --white: #fff7e6;
 }
 
+/* ================= RESET CƠ BẢN ================= */
 * {
   box-sizing: border-box;
 }
@@ -16,9 +17,159 @@ body {
   font-family:
     system-ui,
     -apple-system,
-    Segoe UI,
+    "Segoe UI",
     Roboto,
-    Arial;
+    Arial,
+    sans-serif;
+  background: #000;
+}
+
+/* ================= MÀN HÌNH TẾT ================= */
+.tet-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #7b0000, #000);
+  color: #ffd700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ================= TIÊU ĐỀ ================= */
+.tet-page h1 {
+  font-size: clamp(22px, 6vw, 42px);
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.tet-page h2 {
+  font-size: clamp(20px, 5vw, 32px);
+  margin: 10px 0;
+}
+
+/* ================= CHỮ CHẠY ================= */
+.run-text {
+  white-space: nowrap;
+  animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ================= COUNTDOWN ================= */
+.countdown {
+  font-size: clamp(40px, 10vw, 72px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 16px 0;
+  line-height: 1.2;
+}
+
+/* ================= LỜI CHÚC ================= */
+.wish {
+  font-size: clamp(18px, 4.5vw, 28px);
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+/* ================= CẢNH BÁO 60 GIÂY ================= */
+.alert {
+  font-size: clamp(16px, 4.5vw, 22px);
+  margin-top: 10px;
+  color: #ffeb3b;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ================= PHÁO HOA EMOJI ================= */
+.fireworks::before,
+.fireworks::after {
+  content: "🎆";
+  font-size: clamp(36px, 10vw, 64px);
+  position: absolute;
+  animation: boom 1s infinite alternate;
+  pointer-events: none;
+}
+
+.fireworks::before {
+  top: 15%;
+  left: 10%;
+}
+
+.fireworks::after {
+  top: 20%;
+  right: 10%;
+}
+
+@keyframes boom {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0.6;
+  }
+}
+
+/* ================= NGỰA TẾT ================= */
+.tet-horse {
+  width: clamp(120px, 30vw, 220px);
+  margin-bottom: 16px;
+  animation: horseFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 10px 25px rgba(255, 215, 120, 0.45));
+}
+
+.tet-horse.big {
+  width: clamp(160px, 38vw, 300px);
+}
+
+@keyframes horseFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.04);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .tet-horse {
+    margin-bottom: 12px;
+  }
+
+  .countdown {
+    letter-spacing: 1px;
+  }
+
+  .fireworks::before {
+    top: 10%;
+    left: 5%;
+  }
+
+  .fireworks::after {
+    top: 15%;
+    right: 5%;
+  }
 }
 
 /* ===== PAGE ===== */
@@ -574,5 +725,74 @@ body {
 
   .lm-mascot {
     font-size: 44px;
+  }
+}
+/* ================= ADMIN – MOBILE ================= */
+
+@media (max-width: 768px) {
+  .admin {
+    padding: 12px;
+  }
+
+  .admin-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .admin-row label {
+    font-weight: 600;
+  }
+
+  .admin-wide {
+    width: 100%;
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr 1fr auto;
+    gap: 8px;
+  }
+
+  .admin-grid input {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .admin-danger {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .admin-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .admin-actions .lm-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .admin-note {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+/* ===== SIÊU NHỎ (ĐIỆN THOẠI NHỎ) ===== */
+@media (max-width: 480px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-grid input {
+    font-size: 16px;
+  }
+
+  .admin-danger {
+    width: 100%;
   }
 }

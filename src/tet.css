@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700;900&family=Crimson+Text:wght@400;600;700&display=swap");
+
+:root {
+  --red-primary: #d62828;
+  --red-dark: #9d0208;
+  --red-bright: #dc2f02;
+  --gold: #ffd60a;
+  --gold-light: #ffe66d;
+  --cream: #fff5e1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+}
+
+/* ================= PAGE ================= */
+
+.tet-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--red-dark),
+    var(--red-primary),
+    var(--red-bright),
+    var(--red-primary),
+    var(--red-dark)
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ================= HORSE ================= */
+
+.tet-horse {
+  width: 200px;
+  animation: bounce 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 214, 10, 0.4));
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(5rem, 14vw, 10rem);
+  color: var(--gold);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ================= ALERT ================= */
+
+.alert {
+  background: var(--red-bright);
+  color: var(--cream);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 900;
+  animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ================= AFTER MIDNIGHT ================= */
+
+.fireworks {
+  background: radial-gradient(circle at top, #1a1d3b, #0a0e27);
+}
+
+/* ================= BẦY NGỰA BAY ================= */
+
+.horse-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flying-horse {
+  position: absolute;
+  bottom: -150px;
+  width: 120px;
+  opacity: 0;
+  animation-name: horseFly;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes horseFly {
+  0% {
+    transform: translateY(0) rotate(-10deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-60vh) rotate(10deg);
+  }
+  100% {
+    transform: translateY(-120vh) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+/* ================= FIREWORK CSS ================= */
+
+.firework {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  animation: explode 1.5s infinite ease-out;
+}
+
+.firework::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    100px 0 #ffd60a,
+    -100px 0 #ff9f1c,
+    0 100px #ff595e,
+    0 -100px #8ac926;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ================= LAYER ================= */
+
+.tet-page > * {
+  position: relative;
+  z-index: 1;
+}
